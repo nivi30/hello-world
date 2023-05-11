@@ -11,6 +11,11 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v2
         
+      - name: setup npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+        
       - name: Install github-wiki-details
         run: npm install -g github-wiki-details
         
