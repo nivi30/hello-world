@@ -11,16 +11,9 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v2
         
-      - name: setup npm
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-        
-      - name: Install github-wiki-details
-        run: npm install -g github-wiki-details
-        
       - name: Fetch wiki details
-        run: github-wiki-details --owner nivi30 --repo hello-world --path Home > details.txt
+        run: |
+          wiki_page_url="https://api.github.com/repos/nivi30/hello-world/wiki"
       
       - name: commit
         run: |
