@@ -13,7 +13,7 @@ jobs:
         
       - name: Fetch wiki details
         run: |
-          wiki_page_url="https://api.github.com/repos/nivi30/hello-world/wiki"
+          wiki_page_url="https://api.github.com/repos/nivi30/hello-world.wiki"
           wiki_page_data=$(curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "$wiki_page_url")
           echo "$wiki_page_data" | jq -r '.content' | base64 -d > details.txt
       
