@@ -1,0 +1,26 @@
+name: Fetch wiki page
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+        
+      - name: Install github-wiki-details
+        run: npm install -g github-wiki-details
+        
+      - name: Fetch wiki details
+        run: github-wiki-details --owner nivi30 --repo hello-world --path Home > details.txt
+      
+      - name: commit
+        run: |
+          git config --global user.email "nivethavelu.98@gmail.com"
+          git config --global user.name "nivi30"
+          git add details.txt
+          git commit -m "update details"
+          git push
